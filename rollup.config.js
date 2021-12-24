@@ -1,7 +1,7 @@
 import babel from 'rollup-plugin-babel'
 import serve from 'rollup-plugin-serve'
 export default {
-  input: './practice/index.js', // 入口文件
+  input: './src/index.js', // 入口文件
   output: {
     file: './dist/vue.js', // 出口文件路径
     format: 'umd', // 模块化类型。常见的格式有：IIFE ESM CJS UMD
@@ -14,7 +14,7 @@ export default {
     }),
     process.env.ENV === 'development' ? serve({
       open: true,
-      openPage: '/practice/index.html',
+      openPage: '/public/index.html',
       port: 3000,
       contentBase: ''
     }) : null
