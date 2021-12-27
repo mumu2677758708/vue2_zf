@@ -30,3 +30,28 @@
   - observe去观测data中的数据，进行数据初始化   和vm没关系，说明data已经变成了响应式
   - vm上想取值也能取到data中的数据   vm._data = data 
   - 如果vm.$options.el存在，将数据挂在到页面上
+
+## 模板编译
+- 解析标签和内容：
+  - 实现思路：边解析边删：html = <div id="app">{{message}}</div>，先解析<div id="app">，解析完后,html.substring(start[0].length)，这样html就变成了'{{message}}</div>'，根据while循环继续解析
+- 生成ast语法树：（语法树就是用对象描述js语法）
+  - 构建父子关系，可以通过栈来模拟谁是父亲，谁是子
+  - 自闭合标签，就不用放到栈里
+  - 实现思路：<html><body><p><span></span></p><ul><li></li></ul></body></html>，在这个结构中，从上到下解析，先解析到html标签，添加到栈中（stack = []）,stack=[html],继续解析，[html, body]...[html,body,p,span],遇到开始标签就添加到栈中，遇到闭合标签就从栈数组中移除。遇到p标签的闭合标签时，栈数组变为[html,body]，然后继续解析... [html,body,ul,li]。根据从栈中添加和移除可以形成树结构
+
+## 创建渲染watcher
+- 初始化渲染watcher
+- 生成虚拟dom
+- 生成真实dom元素
+## 生命周期的合并
+- mixin原理
+- 合并生命周期
+- 调用生命周期
+- 初始化流程中调用生命周期
+## 依赖收集
+- 在渲染时存储watcher
+- 对象依赖收集
+- 数组的依赖收集
+## 实现Vue异步更新之nextTick
+- 实现队列机制
+- nextTick实现原理
