@@ -39,6 +39,15 @@
   - 自闭合标签，就不用放到栈里
   - 实现思路：<html><body><p><span></span></p><ul><li></li></ul></body></html>，在这个结构中，从上到下解析，先解析到html标签，添加到栈中（stack = []）,stack=[html],继续解析，[html, body]...[html,body,p,span],遇到开始标签就添加到栈中，遇到闭合标签就从栈数组中移除。遇到p标签的闭合标签时，栈数组变为[html,body]，然后继续解析... [html,body,ul,li]。根据从栈中添加和移除可以形成树结构
 
+## 流程回顾：
+- 1.默认会调用vue._init方法将用户的参数挂载到$options选项中  vm.$options
+- 2.vue会根据用户的参数进行数据的初始化 props  computed watch  会获取到对象作为数据，可以通过vm._data访问到用户的数据
+- 3.对数据进行观测 对象（递归使用Object.defineProperty）、数组（方法的重写）  劫持到用户的操作，比如用户修改了数据 ==> 更新视图（性能问题）
+- 4.将数据代理到vm对象上  vm.xx  ===> vm._data.xx
+- 5.判断用户是否传入了el属性，内部会调用$mount方法，此方法也可以用户自己调用
+- 6.对模板的优先级处理  render/template/outerHTML
+- 7.将模板编译成函数  parserHTML  解析模板 ==> ast语法树，解析语法树生成code ===> render函数
+- 8.通过render方法生成虚拟dom + 真实的数据  ==> 真实的dom
 ## 创建渲染watcher
 - 初始化渲染watcher
 - 生成虚拟dom
