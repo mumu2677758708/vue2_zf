@@ -24,15 +24,10 @@ function createASTElement(tagName, attrs) {
 
 function start(tagName, attrs) {
   // 遇到开始标签，就取栈中的最后一个作为父节点
-  // let parent = stack[stack.length - 1]
   let element = createASTElement(tagName, attrs)
   if (!root) {
     root = element
   }
-  // if(parent) {
-  //   element.parent = parent
-  //   parent.children.push(element)
-  // }
   currentParent = element
   stack.push(element)
 }
@@ -78,10 +73,10 @@ export function parseHTML(html) {
     }
     let text
     if (textEnd >= 0) {
-      text = html.substring(0, textEnd)
+      text = html.substring(0, textEnd) // 截取文本
     }
     if (text) {
-      advance(text.length)
+      advance(text.length) // 截取html
       chars(text)
     }
   }
@@ -108,8 +103,8 @@ export function parseHTML(html) {
           value: attr[3]
         })
       }
-      if (end) {
-        advance(end[0].length)
+      if (end) { // end为‘>’
+        advance(end[0].length) // 此时html为‘{{message}}</div>’
         return match
       }
     }

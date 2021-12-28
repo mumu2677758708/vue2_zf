@@ -7,13 +7,9 @@
   <title>Document</title>
 </head>
 <body>
-  <div id="app">
-    <p>{{message}}</p>
-    <span>hello</span>
-  </div>
+  <div id="app">aaa{{message}}</div>
   <script src="../dist/vue.js"></script>
   <script>
-    console.log(Vue)
     // Vue默认支持响应式数据变化（跟双向绑定是有区别的）
     // 我要知道数据的变化是如何变化的  Object.defineProperty将对象中原有的属性更改为带有get和set的一个属性，这样当修改的时候，触发set方法 ==> 更新视图
     const vm = new Vue({
