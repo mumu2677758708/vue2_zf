@@ -48,6 +48,7 @@
 - 6.对模板的优先级处理  render/template/outerHTML
 - 7.将模板编译成函数  parserHTML  解析模板 ==> ast语法树，解析语法树生成code ===> render函数
 - 8.通过render方法生成虚拟dom + 真实的数据  ==> 真实的dom
+- 9.根据虚拟节点渲染成真实节点
 ## 创建渲染watcher
 - 初始化渲染watcher
 - 生成虚拟dom

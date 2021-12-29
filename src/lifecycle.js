@@ -4,14 +4,15 @@ import Watcher from './watcher'
 export function lifecycleMixin(Vue){
     Vue.prototype._update = function (vnode) {
         const vm = this;
+        // 采用的是，先深度遍历，创建节点（遇到节点就创造节点，递归创建）
         vm.$el = patch(vm.$el,vnode);
     }
 }
 export function mountComponent(vm,el) {
-    vm.$el = el;
+    vm.$el = el; // 页面真实元素
     let updateComponent = () => {
         // 将虚拟节点 渲染到页面上
-        vm._update(vm._render());
+        vm._update(vm._render()); // 对render进行封装的原因是：render里面还会调用_c、_v、_s方法
     }
     new Watcher(vm, updateComponent, () => {}, true);
 }

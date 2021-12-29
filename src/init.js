@@ -7,8 +7,8 @@ export function initMixin(Vue){
   Vue.prototype._init = function (options) {
     const vm = this
     // 把用户的选项放到vm上，这样在其他方法中都可以获取到options
-    // vm.$options = options // 为了后续扩展的方法都可以获取到$options选项
-    vm.$options = mergeOptions(vm.constructor.options,options);
+    vm.$options = options // 为了后续扩展的方法都可以获取到$options选项
+    // vm.$options = mergeOptions(vm.constructor.options,options);
     // 初始化状态
     callHook(vm,'beforeCreate');
     initState(vm)
@@ -41,6 +41,7 @@ export function initMixin(Vue){
       const render = compileToFunctions(template) // 将template编译成render函数
       options.render = render
     }
+    // 组件挂载
     mountComponent(vm, el)
   }
 }
