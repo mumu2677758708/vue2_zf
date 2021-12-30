@@ -12,8 +12,17 @@ export function renderMixin(Vue){
     Vue.prototype._render = function () {
         const vm = this; // vm表示实例，不是Vue构造函数
         const {render} = vm.$options;
+        /**
+         * render函数示例：
+         * function anonymous() {
+             with(this) {
+                 return _c('div', {
+                     id: "app"
+                 }, _v("aaa" + _s(message)))
+             }
+         })
+         */
         let vnode = render.call(vm); // vm中有所有数据  取vm.xx会代理到vm._data.xx
-        debugger
         return vnode;
     }
 }

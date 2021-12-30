@@ -32,7 +32,7 @@ function updateProperties(vnode){
     let newProps = vnode.data || {}; // 获取当前老节点中的属性
     let el = vnode.el; // 当前的真实节点
     for(let key in newProps){
-        if(key === 'style'){ 
+        if(key === 'style'){
             for(let styleName in newProps.style){
                 el.style[styleName] = newProps.style[styleName]
             }

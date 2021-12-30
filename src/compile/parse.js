@@ -11,6 +11,13 @@ let currentParent;
 let stack = [];
 const ELEMENT_TYPE = 1;
 const TEXT_TYPE = 3;
+/**
+ * nodeType:
+ * 1:元素节点
+ * 2:属性节点
+ * 3:文本节点
+ * 8:注释节点
+ */
 
 function createASTElement(tagName, attrs) {
   return {
