@@ -2,6 +2,7 @@
 import { initMixin } from './init'
 import { renderMixin } from './render'
 import { lifecycleMixin } from './lifecycle'
+import { initGlobalAPI } from './state'
 function Vue(options) {
   this._init(options)
 }
@@ -9,5 +10,6 @@ function Vue(options) {
 initMixin(Vue)
 renderMixin(Vue)
 lifecycleMixin(Vue)
+initGlobalAPI
 // 导出Vue给别人使用
 export default Vue
