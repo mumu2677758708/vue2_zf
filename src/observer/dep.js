@@ -12,6 +12,9 @@ class Dep{
   notify() {
     this.subs.forEach(watcher => watcher.update())
   }
+  addSub(watcher) {
+    this.subs.push(watcher)
+  }
 }
 let stack = []
 export function pushTarget(watcher) {
