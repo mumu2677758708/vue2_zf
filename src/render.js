@@ -7,7 +7,7 @@ export function renderMixin(Vue){
         return createTextNode(text);
     }
     Vue.prototype._s = function (val) { // JSON.stringify
-        return val == null? '' : (typeof val === 'object'?JSON.stringify(val):val);
+        return val == null ? '' : (typeof val === 'object'?JSON.stringify(val):val);
     }
     Vue.prototype._render = function () {
         const vm = this; // vm表示实例，不是Vue构造函数

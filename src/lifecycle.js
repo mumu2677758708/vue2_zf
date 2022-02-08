@@ -18,3 +18,12 @@ export function mountComponent(vm,el) {
     new Watcher(vm, updateComponent, () => {}, true);
 }
 // 先调用_render方法生成虚拟dom,通过_update方法将虚拟dom创建成真实的dom
+
+export function callHook(vm, hook) {
+    const handlers = vm.$options[hook];
+    if (handlers) {
+        for (let i = 0; i < handlers.length; i++) {
+            handlers[i].call(vm);
+        }
+    }
+}

@@ -29,7 +29,8 @@ export function mergeOptions(parent, child) {
         mergeField(key)
     }
     for (let key in child) {
-        if (!parent.hasOwnProperty(key)) {
+        // todo parent存在的前提是自己加上的
+        if (parent && !parent.hasOwnProperty(key)) {
             mergeField(key);
         }
     }
@@ -42,19 +43,10 @@ export function mergeOptions(parent, child) {
                     ...parent[key],
                     ...child[key]
                 }
-            }else{
+            } else {
                 options[key] = child[key];
             }
         }
     }
     return options
-}
-
-export function callHook(vm, hook) {
-    const handlers = vm.$options[hook];
-    if (handlers) {
-        for (let i = 0; i < handlers.length; i++) {
-            handlers[i].call(vm);
-        }
-    }
 }

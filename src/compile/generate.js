@@ -12,7 +12,6 @@ function gen(node) {
     let lastIndex = defaultTagRE.lastIndex = 0
     let tokens = []
     let match, index;
-    console.log(text)
     while (match = defaultTagRE.exec(text)) { // 如果正则加上g，再配合exec，就会出现一个lastIndex的问题，所以需要给defaultTagRE.lastIndex设置为0
       index = match.index
       if (index > lastIndex) {

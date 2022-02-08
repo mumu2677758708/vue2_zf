@@ -17,6 +17,7 @@ class Dep{
   }
 }
 let stack = []
+Dep.target = null
 export function pushTarget(watcher) {
   Dep.target = watcher
   stack.push(watcher)

@@ -46,15 +46,15 @@ function defineReactive(data,key,value) { // vue2 慢的原因，主要在这个
   let dep = new Dep()
   Object.defineProperty(data, key,{
     get() {
-      if(Dep.target) { // 如果取值时有watcher
-        dep.depend() // 让watcher保存dep,并且让dep保存watcher
-        if(childOb) {
-          childOb.dep.depend() // 收集数组依赖
-          if(Array.isArray(value)) { // 如果内部还是数组
-            dependArray(value) // 不停的进行依赖收集
-          }
-        }
-      }
+      // if(Dep.target) { // 如果取值时有watcher
+      //   dep.depend() // 让watcher保存dep,并且让dep保存watcher
+      //   if(childOb) {
+      //     childOb.dep.depend() // 收集数组依赖
+      //     if(Array.isArray(value)) { // 如果内部还是数组
+      //       dependArray(value) // 不停的进行依赖收集
+      //     }
+      //   }
+      // }
       return value // 闭包，此value会向上层的value进行查找
     },
     set(newVal) {

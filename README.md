@@ -28,7 +28,7 @@
   - 在vm.$options上搜索有没有data属性    initState
   - 有的话，判断data是不是一个函数，如果是函数取函数返回值   initData
   - observe去观测data中的数据，进行数据初始化   和vm没关系，说明data已经变成了响应式
-  - vm上想取值也能取到data中的数据   vm._data = data 
+  - vm上想取值也能取到data中的数据   vm._data = data
   - 如果vm.$options.el存在，将数据挂在到页面上
 
 ## 模板编译
@@ -70,3 +70,7 @@
 ## 实现Vue异步更新之nextTick
 - 实现队列机制
 - nextTick实现原理
+备注：
+使用场景：更新数据后重新渲染Dom
+
+

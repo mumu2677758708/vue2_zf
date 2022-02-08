@@ -21,6 +21,7 @@ methods.forEach(method => {
         break;
       case 'splice':
         inserted = args.slice(2) // splice从第三个参数起，是增加的新数据
+        break
       default:
         break;
     }
